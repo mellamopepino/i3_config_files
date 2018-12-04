@@ -15,7 +15,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run -lines 5 -width 400 -opacity "85" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none
+bindsym $mod+d exec rofi -show run -lines 5 -width 400 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none
 
 set $up    k
 set $down  j
@@ -200,8 +200,9 @@ bar {
         }
 }
 
-bindsym $mod+shift+s exec echo '' | rofi -dmenu -p 'search:' -lines 5 -width 400 -opacity "85" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none | xargs -iarg firefox -search arg
-bindsym $mod+shift+y exec echo '' | rofi -dmenu -p 'Y:' -lines 5 -width 400 -opacity "85" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none |sed 's/\ /%20/g' | sed 'i\https://www.youtube.com/results?search_query=' | tr '\n' ' ' | sed 's/\ //g' | xargs -iarg firefox arg
+bindsym $mod+shift+s exec echo '' | rofi -dmenu -p 'search:' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none | xargs -iarg firefox -search arg
+bindsym $mod+shift+y exec echo '' | rofi -dmenu -p 'Y:' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none |sed 's/\ /%20/g' | sed 'i\https://www.youtube.com/results?search_query=' | tr '\n' ' ' | sed 's/\ //g' | xargs -iarg firefox arg
+bindsym $mod+shift+o exec find . -path ./.local -prune -o -name *.pdf | rofi -dmenu -p 'open: ' -fuzzy -lines 5 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none | xargs -ifile zathura file
 
 bindsym $mod+shift+f exec firefox
 bindsym $mod+shift+m exec spotify
