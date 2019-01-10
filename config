@@ -158,7 +158,7 @@ mode "$mode_exit" {
 
 set $mode_chats Open: (t) telegram, (c) chatC&S, (w) whatsapp, (a) all
 mode "$mode_chats" {
-	bindsym t exec ./Telegram/Telegram, mode "default"
+	bindsym t exec telegram-desktop, mode "default"
 	bindsym w exec firefox -new-window web.whatsapp.com, mode "default"
 	bindsym c exec firefox -new-window https://chat.cysonline.com.ar, mode "default"
 	bindsym a exec telegram-desktop; exec firefox -new-window web.whatsapp.com; exec slack, mode "default"
