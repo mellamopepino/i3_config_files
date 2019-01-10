@@ -156,13 +156,12 @@ mode "$mode_exit" {
 
 # Menú de chats
 
-set $mode_chats Open: (t) telegram, (s) slack, (w) whatsapp, (d) discord, (a) all
+set $mode_chats Open: (t) telegram, (c) chatC&S, (w) whatsapp, (a) all
 mode "$mode_chats" {
 	bindsym t exec ./Telegram/Telegram, mode "default"
-	bindsym s exec slack, mode "default"
 	bindsym w exec firefox -new-window web.whatsapp.com, mode "default"
-	bindsym a exec ./Telegram/Telegram; exec firefox -new-window web.whatsapp.com; exec slack, mode "default"
-	bindsym d exec discord, mode "default"
+	bindsym c exec firefox -new-window https://chat.cysonline.com.ar, mode "default"
+	bindsym a exec telegram-desktop; exec firefox -new-window web.whatsapp.com; exec slack, mode "default"
 
 	#back to normal: Enter or Escape
 	bindsym Return mode "default"
@@ -207,14 +206,9 @@ bindsym $mod+shift+y exec echo '' | rofi -dmenu -p 'Y:' -lines 5 -width 400 -opa
 bindsym $mod+shift+f exec firefox
 bindsym $mod+shift+m exec spotify
 
-assign [class="Slack"] $workspace4
-assign [class="discord"] $workspace4
 assign [class="TelegramDesktop"] $workspace2
 assign [class="Atom"] $workspace3
 assign [class="spotify"] $workspace10
-assign [class="Gnome-mines"] $workspace9
-assign [class="Gnome-sudoku"] $workspace9
-assign [class="Gnome-mahjongg"] $workspace9
 
 for_window [class="Firefox" title="WhatsApp - Mozilla Firefox"] move window to workspace $workspace2
 
