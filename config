@@ -189,6 +189,22 @@ mode "$mode_rofi" {
 
 bindsym $mod+d mode "$mode_rofi"
 
+# Menú jueguitos
+
+set $mode_juegos Juegos: (b) mines, (s) sudoku, (m) mahjongg
+mode "$mode_juegos" {
+	bindsym b exec gnome-mines , mode "default"
+	bindsym s exec gnome-sudoku, mode "default"
+	bindsym m exec gnome-mahjongg, mode "default"
+
+	#back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+g mode "$mode_juegos"
+
+
 set $inactive_bg    #2C3C3C
 set $active_bg      #216649
 set $urgent_bg      #ffffff
