@@ -125,7 +125,7 @@ bindsym $mod+r mode "resize"
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) shutdown
 mode "$mode_system" {
-	bindsym l exec --no-startup-id i3lock -f -i ~/Pictures/lock.png -c 000000 && systemctl suspend, mode "default"
+	bindsym l exec --no-startup-id i3lock -f -i ~/.config/i3/imgs/lock.png -c 000000 && systemctl suspend, mode "default"
 	bindsym e mode "$mode_exit"; exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 	bindsym s exec --no-startup-id systemctl suspend, mode "default"
 	bindsym h exec --no-startup-id systemctl hibernate, mode "default"
@@ -246,7 +246,7 @@ exec --no-startup-id tb_delete_checked
 #Wifi applet
 exec --no-startup-id nm-applet
 #wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+exec --no-startup-id feh --bg-fill ~/.config/i3/imgs/wallpaper.jpg
 #Composite manager
 exec --no-startup-id compton
 #Notifications
