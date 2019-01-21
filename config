@@ -61,6 +61,9 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# focus follows mouse
+focus_follows_mouse no
+
 set $workspace1 "1 "
 set $workspace2 "2 "
 set $workspace3 "3 "
@@ -216,6 +219,11 @@ bar {
           inactive_workspace  $inactive_bg $inactive_bg $inactive_text
           urgent_workspace    $urgent_bg   $urgent_bg   $inactive_text
         }
+	# disable clicking on workspace buttons
+	bindsym button1 nop
+	# disable scrolling workspaces
+	bindsym button4 nop
+	bindsym button5 nop
 }
 
 bindsym $mod+shift+f exec firefox
