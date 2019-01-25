@@ -249,6 +249,8 @@ exec --no-startup-id tb_delete_checked
 
 #Wifi applet
 exec --no-startup-id nm-applet
+#volume applet
+exec --no-startup-id volumeicon
 #wallpaper
 exec --no-startup-id feh --bg-fill ~/.config/i3/imgs/wallpaper.jpg
 #Composite manager
