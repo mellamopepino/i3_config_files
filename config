@@ -65,14 +65,14 @@ bindsym $mod+a focus parent
 focus_follows_mouse no
 
 set $workspace1 "1 "
-set $workspace2 "2 "
+set $workspace2 "2 "
 set $workspace3 "3 "
 set $workspace4 "4"
 set $workspace5 "5"
 set $workspace6 "6"
 set $workspace7 "7"
 set $workspace8 "8"
-set $workspace9 "9 "
+set $workspace9 "9 "
 set $workspace10 "10 "
 
 # switch to workspace
@@ -245,13 +245,13 @@ bar {
 bindsym $mod+shift+f exec firefox
 bindsym $mod+shift+m exec spotify
 
-assign [class="TelegramDesktop"] $workspace2
-assign [class="Atom"] $workspace3
+assign [class="TelegramDesktop"] $workspace9
+assign [class="Atom"] $workspace2
 assign [class="spotify"] $workspace10
 
-for_window [class="Firefox" title="WhatsApp - *"] move window to workspace $workspace2
+for_window [class="Firefox" title="WhatsApp - *"] move window to workspace $workspace9
 
-for_window [class="Firefox" title="C&S - *"] move window to workspace $workspace2
+for_window [class="Firefox" title="C&S - *"] move window to workspace $workspace9
 
 #Change keyboard layout
 bindsym $mod+t exec change-layout
