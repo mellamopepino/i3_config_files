@@ -191,6 +191,22 @@ mode "$mode_rofi" {
 
 bindsym $mod+d mode "$mode_rofi"
 
+# Menú de browsers
+
+set $mode_browser Browser: (f) firefox, (q) qutebrowser
+mode "$mode_browser" {
+
+	bindsym f exec firefox, mode "default"
+
+	bindsym q exec qutebrowser, mode "default"
+
+	#back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+b mode "$mode_browser"
+
 set $inactive_bg    #2C3C3C
 set $active_bg      #216649
 set $urgent_bg      #ffffff
