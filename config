@@ -249,9 +249,9 @@ assign [class="TelegramDesktop"] $workspace2
 assign [class="Atom"] $workspace3
 assign [class="spotify"] $workspace10
 
-for_window [class="Firefox" title="WhatsApp - Mozilla Firefox"] move window to workspace $workspace2
+for_window [class="Firefox" title="WhatsApp - *"] move window to workspace $workspace2
 
-for_window [class="Firefox" title="C&S - Mozilla Firefox"] move window to workspace $workspace2
+for_window [class="Firefox" title="C&S - *"] move window to workspace $workspace2
 
 #Change keyboard layout
 bindsym $mod+t exec change-layout
