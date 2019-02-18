@@ -253,25 +253,28 @@ for_window [class="Firefox" title="WhatsApp - *"] move window to workspace $work
 
 for_window [class="Firefox" title="C&S - *"] move window to workspace $workspace9
 
-#Change keyboard layout
+# Set keyboard layout
+exec setxkbmap -layout latam
+
+# Change keyboard layout
 bindsym $mod+t exec change-layout
 
-#Workspaces layouts
+# Workspaces layouts
 exec_always ~/.config/i3/per-workspace-layout.pl
-#Taskbook (scratchpad)
+# Taskbook (scratchpad)
 exec --no-startup-id gnome-terminal --role=taskbook -e 'sh -c "tb; exec bash"'
 for_window [window_role="taskbook"] move scratchpad
 exec --no-startup-id tb_delete_checked
 
-#Wifi applet
+# Wifi applet
 exec --no-startup-id nm-applet
-#volume applet
+# volume applet
 exec --no-startup-id volumeicon
-#wallpaper
+# wallpaper
 exec --no-startup-id feh --bg-fill ~/.config/i3/imgs/wallpaper.jpg
-#Composite manager
+# Composite manager
 exec --no-startup-id compton
-#Notifications
+# Notifications
 exec killall -q notify-osd
 exec --no-startup-id dunst
 
@@ -290,6 +293,6 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-#Screenshot
+# Screenshot
 bindsym Print exec gnome-screenshot -i
 bindsym Shift+Print exec gnome-screenshot -w -B
