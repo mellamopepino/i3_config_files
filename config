@@ -242,7 +242,6 @@ bar {
 	bindsym button5 nop
 }
 
-bindsym $mod+shift+f exec firefox
 bindsym $mod+shift+m exec spotify
 
 assign [class="Atom"] $workspace2
