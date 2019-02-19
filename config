@@ -159,8 +159,8 @@ mode "$mode_exit" {
 set $mode_chats Open: (t) telegram, (c) chatC&S, (a) all
 mode "$mode_chats" {
 	bindsym t exec telegram-desktop, mode "default"
-	bindsym c exec firefox -new-window https://chat.cysonline.com.ar, mode "default"
-	bindsym a exec telegram-desktop; exec firefox -new-window chat.cysonline.com.ar, mode "default"
+	bindsym c exec qutebrowser --target window https://chat.cysonline.com.ar, mode "default"
+	bindsym a exec telegram-desktop; exec qutebrowser --target window chat.cysonline.com.ar, mode "default"
 
 	#back to normal: Enter or Escape
 	bindsym Return mode "default"
@@ -248,7 +248,7 @@ assign [class="Code"] $workspace2
 assign [class="TelegramDesktop"] $workspace9
 assign [class="spotify"] $workspace10
 
-for_window [class="Firefox" title="C&S - *"] move window to workspace $workspace9
+for_window [class="qutebrowser" title="C&S - *"] move window to workspace $workspace9
 
 # Set keyboard layout
 exec setxkbmap -layout latam
