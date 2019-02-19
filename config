@@ -245,8 +245,9 @@ bar {
 bindsym $mod+shift+f exec firefox
 bindsym $mod+shift+m exec spotify
 
-assign [class="TelegramDesktop"] $workspace9
 assign [class="Atom"] $workspace2
+assign [class="Code"] $workspace2
+assign [class="TelegramDesktop"] $workspace9
 assign [class="spotify"] $workspace10
 
 for_window [class="Firefox" title="WhatsApp - *"] move window to workspace $workspace9
