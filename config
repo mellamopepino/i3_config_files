@@ -258,10 +258,6 @@ bindsym $mod+t exec change-layout
 
 # Workspaces layouts
 exec_always ~/.config/i3/per-workspace-layout.pl
-# Taskbook (scratchpad)
-exec --no-startup-id gnome-terminal --role=taskbook -e 'sh -c "tb; exec bash"'
-for_window [window_role="taskbook"] move scratchpad
-exec --no-startup-id tb_delete_checked
 
 # Wifi applet
 exec --no-startup-id nm-applet
