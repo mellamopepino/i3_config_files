@@ -248,6 +248,7 @@ assign [class="Code"] $workspace2
 assign [class="TelegramDesktop"] $workspace9
 
 for_window [class="qutebrowser" title="C&S - *"] move window to workspace $workspace9
+for_window [class="qutebrowser" title="Correo de C&S - *"] move window to workspace $workspace8
 
 # Set keyboard layout
 exec setxkbmap -layout latam
