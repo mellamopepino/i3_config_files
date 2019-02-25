@@ -242,6 +242,7 @@ bar {
 }
 
 bindsym $mod+shift+m exec qutebrowser --target window https://mail.google.com/mail/u/1/#inbox
+bindsym $mod+shift+t exec qutebrowser --target window https://kairos.cysonline.com.ar/#/semana
 
 assign [class="Atom"] $workspace2
 assign [class="Code"] $workspace2
@@ -249,6 +250,7 @@ assign [class="TelegramDesktop"] $workspace9
 
 for_window [class="qutebrowser" title="C&S - *"] move window to workspace $workspace9
 for_window [class="qutebrowser" title="Recibidos - *"] move window to workspace $workspace8
+for_window [class="qutebrowser" title="Login - Kairos - *"] move window to workspace $workspace7
 
 # Set keyboard layout
 exec setxkbmap -layout latam
