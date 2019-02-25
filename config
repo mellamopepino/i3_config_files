@@ -241,6 +241,8 @@ bar {
 	bindsym button5 nop
 }
 
+bindsym $mod+shift+m exec qutebrowser --target window https://mail.google.com/mail/u/1/#inbox
+
 assign [class="Atom"] $workspace2
 assign [class="Code"] $workspace2
 assign [class="TelegramDesktop"] $workspace9
