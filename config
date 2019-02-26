@@ -252,6 +252,10 @@ for_window [class="qutebrowser" title="C&S - *"] move window to workspace $works
 for_window [class="qutebrowser" title="Recibidos - *"] move window to workspace $workspace8
 for_window [class="qutebrowser" title="Login - Kairos - *"] move window to workspace $workspace7
 
+# Terminal (scratchpad)
+exec --no-startup-id gnome-terminal --role=terminal-scratchpad
+for_window [window_role="terminal-scratchpad"] move scratchpad
+
 # Set keyboard layout
 exec setxkbmap -layout latam
 
