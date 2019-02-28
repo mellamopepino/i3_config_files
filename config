@@ -160,7 +160,7 @@ set $mode_chats Open: (t) telegram, (c) chatC&S, (a) all
 mode "$mode_chats" {
 	bindsym t exec telegram-desktop, mode "default"
 	bindsym c exec rocketchat-desktop, mode "default"
-	bindsym a exec telegram-desktop; rocketchat-desktop, mode "default"
+	bindsym a exec telegram-desktop; exec rocketchat-desktop, mode "default"
 
 	#back to normal: Enter or Escape
 	bindsym Return mode "default"
@@ -176,9 +176,9 @@ mode "$mode_rofi" {
 	
 	bindsym d exec rofi -show run -lines 5 -width 400 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none, mode "default"
 
-	bindsym s exec echo '' | rofi -dmenu -p 'search:' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none | xargs -iarg firefox -search arg, mode "default"
+	bindsym s exec echo '' | rofi -dmenu -p 'search' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none | xargs -ibusqueda qutebrowser --target window -R busqueda, mode "default"
 
-	bindsym y exec echo '' | rofi -dmenu -p 'Y:' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none |sed 's/\ /%20/g' | sed 'i\https://www.youtube.com/results?search_query=' | tr '\n' ' ' | sed 's/\ //g' | xargs -iarg firefox arg, mode "default"
+	bindsym y exec echo '' | rofi -dmenu -p 'Y' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none |sed 's/\ /%20/g' | sed 'i\https://www.youtube.com/results?search_query=' | tr '\n' ' ' | sed 's/\ //g' | xargs -iurl qutebrowser --target window -R url, mode "default"
 
 	bindsym o exec find . -path ./.local -prune -o -name *.pdf | rofi -dmenu -p 'open: ' -fuzzy -lines 5 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none | xargs -ifile zathura file, mode "default"
 
