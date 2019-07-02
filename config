@@ -135,7 +135,7 @@ mode "$mode_system" {
 	#back to normal: Enter or Escape
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
-}	 
+}
 
 bindsym $mod+o mode "$mode_system"
 
@@ -172,14 +172,14 @@ bindsym $mod+c mode "$mode_chats"
 
 set $mode_rofi Rofi: (d) dmenu, (s) search browser, (y) search youtube, (o) open zathura
 mode "$mode_rofi" {
-	
-	bindsym d exec rofi -show run -lines 5 -width 400 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none, mode "default"
 
-	bindsym s exec echo '' | rofi -dmenu -p 'search:' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none | xargs -iarg firefox -search arg, mode "default"
+	bindsym d exec rofi -show run -lines 5 -width 400 -opacity "95" -bw 0 -bg "$focused_bg" -fg "$focused_text" -hlbg "$focused_bg" -hlfg "#1C2124" -separator-style none, mode "default"
 
-	bindsym y exec echo '' | rofi -dmenu -p 'Y:' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none |sed 's/\ /%20/g' | sed 'i\https://www.youtube.com/results?search_query=' | tr '\n' ' ' | sed 's/\ //g' | xargs -iarg firefox arg, mode "default"
+	bindsym s exec echo '' | rofi -dmenu -p 'search:' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$focused_bg" -fg "$focused_text" -hlbg "$focused_bg" -hlfg "#1C2124" -separator-style none | xargs -iarg firefox -search arg, mode "default"
 
-	bindsym o exec find . -path ./.local -prune -o -name *.pdf | rofi -dmenu -p 'open: ' -fuzzy -lines 5 -opacity "95" -bw 0 -bg "$active_bg" -fg "$active_text" -hlbg "$active_bg" -hlfg "#1C2124" -separator-style none | xargs -ifile zathura file, mode "default"
+	bindsym y exec echo '' | rofi -dmenu -p 'Y:' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$focused_bg" -fg "$focused_text" -hlbg "$focused_bg" -hlfg "#1C2124" -separator-style none |sed 's/\ /%20/g' | sed 'i\https://www.youtube.com/results?search_query=' | tr '\n' ' ' | sed 's/\ //g' | xargs -iarg firefox arg, mode "default"
+
+	bindsym o exec find . -path ./.local -prune -o -name *.pdf | rofi -dmenu -p 'open: ' -fuzzy -lines 5 -opacity "95" -bw 0 -bg "$focused_bg" -fg "$focused_text" -hlbg "$focused_bg" -hlfg "#1C2124" -separator-style none | xargs -ifile zathura file, mode "default"
 
 
 	#back to normal: Enter or Escape
@@ -189,19 +189,62 @@ mode "$mode_rofi" {
 
 bindsym $mod+d mode "$mode_rofi"
 
-set $inactive_bg    #2C3C3C
-set $active_bg      #216649
-set $urgent_bg      #ffffff
-set $active_text    #ffffff
-set $inactive_text  #888888
+### GENERAL COLORS ###
+
+set $focused_bg               #f3a500
+set $focused_inactive_bg      #f3a500
+set $unfocused_bg             #FBCF64
+set $urgent_bg                #000000
+
+set $focused_text             #000000
+set $focused_inactive_text    #000000
+set $unfocused_text           #333332
+set $urgent_text              #000000
+
+### BAR ###
+
+set $bar_focused_text                #000000
+set $bar_focused_inactive_text       #000000
+set $bar_unfocused_text              #333332
+set $bar_urgent_text                 #ffe898
+
+set $bar_focused_bg                  #f3a500
+set $bar_focused_inactive_bg         #f3a500
+set $bar_unfocused_bg                #FBCF64
+set $bar_urgent_bg                   #000000
+
+### BLOCKS ###
+
+set $blocks_focused_text             $focused_text
+set $blocks_focused_inactive_text    $focused_text
+set $blocks_unfocused_text           $unfocused_text
+set $blocks_urgent_text              $urgent_text
+
+set $blocks_focused_bg               $focused_bg
+set $blocks_focused_inactive_bg      $focused_bg
+set $blocks_unfocused_bg             $urgent_bg
+set $blocks_urgent_bg                $unfocused_bg
+
+### WINDOW ###
+
+set $window_focused_text             #000000
+set $window_focused_inactive_text    #000000
+set $window_unfocused_text           #333332
+set $window_urgent_text              #000000
+
+set $window_focused_bg               #f3a500
+set $window_focused_inactive_bg      #f3a500
+set $window_unfocused_bg             #FBCF64
+set $window_urgent_bg                #000000
+
 
 # Window colors
 
-# class                  border       backgr       text            indicator
-client.focused           $active_bg   $active_bg   $active_text    #000000
-client.focused_inactive  $inactive_bg $inactive_bg $active_text    #000000
-client.unfocused         $inactive_bg $inactive_bg $inactive_text  #000000
-client.urgent            $urgent_bg   $urgent_bg   $inactive_text  #000000
+# class                  border                       backgr                       text                           indicator
+client.focused           $window_focused_bg           $window_focused_bg           $window_focused_text           #000000
+client.focused_inactive  $window_focused_inactive_bg  $window_focused_inactive_bg  $window_focused_inactive_text  #000000
+client.unfocused         $window_unfocused_bg         $window_unfocused_bg         $window_unfocused_text         #000000
+client.urgent            $window_urgent_bg            $window_urgent_bg            $window_unfocused_text         #000000
 
 hide_edge_borders both
 
@@ -211,11 +254,11 @@ bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         tray_output primary
         colors {
-          background $inactive_bg
-          # class             border       background   text
-          focused_workspace   $active_bg   $active_bg   $active_text
-          inactive_workspace  $inactive_bg $inactive_bg $inactive_text
-          urgent_workspace    $urgent_bg   $urgent_bg   $inactive_text
+          background $unfocused_bg
+          # class             border             background         text
+          focused_workspace   $bar_focused_bg    $bar_focused_bg    $bar_focused_text
+          inactive_workspace  $bar_unfocused_bg  $bar_unfocused_bg  $bar_unfocused_text
+          urgent_workspace    $bar_urgent_bg     $bar_urgent_bg     $bar_urgent_text
         }
 }
 
@@ -246,7 +289,7 @@ exec --no-startup-id tb_delete_checked
 #Wifi applet
 exec --no-startup-id nm-applet
 #wallpaper
-exec --no-startup-id feh --bg-fill ~/.config/i3/imgs/wallpaper.jpg
+exec --no-startup-id feh --bg-fill ~/.config/i3/imgs/wallpaper.png
 #Composite manager
 exec --no-startup-id compton
 #Notifications
