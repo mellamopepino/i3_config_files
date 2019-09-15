@@ -253,8 +253,6 @@ bar {
 bindsym $mod+shift+f exec firefox
 bindsym $mod+shift+m exec spotify
 
-assign [class="Slack"] $workspace4
-assign [class="discord"] $workspace4
 assign [class="TelegramDesktop"] $workspace2
 assign [class="Atom"] $workspace3
 assign [class="spotify"] $workspace10
