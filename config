@@ -53,7 +53,7 @@ bindsym $mod+space focus mode_toggle
 
 # Scratchpad
 bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus scratchpad show, resize set 1000 700, move position center
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -173,7 +173,7 @@ mode "$mode_rofi" {
 
 	bindsym s exec echo '' | rofi -dmenu -p 'search:' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$focused_bg" -fg "$focused_text" -hlbg "$focused_bg" -separator-style none -hide-scrollbar | xargs -iarg firefox -search arg, mode "default"
 
-	bindsym y exec echo '' | rofi -dmenu -p 'Y:' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$focused_bg" -fg "$focused_text" -hlbg "$focused_bg" -separator-style none -hide-scrollbar |sed 's/\ /%20/g' | sed 'i\https://www.youtube.com/results?search_query=' | tr '\n' ' ' | sed 's/\ //g' | xargs -iarg firefox arg, mode "default"
+	bindsym y exec echo '' | rofi -dmenu -p 'Y:' -lines 5 -width 400 -opacity "95" -bw 0 -bg "$focused_bg" -fg "$focused_text" -hlbg "$focused_bg" -separator-style none -hide-scrollbar |sed 's/\ /%20/g' | sed 'i\https://www.youtube.com/results?search_query=' | tr '\n' ' ' | sed 's/\ //g' | xargs -iarg firefox -new-window arg, mode "default"
 
 	bindsym o exec find . -path ./.local -prune -o -name *.pdf | rofi -dmenu -p 'open: ' -fuzzy -lines 5 -opacity "95" -bw 0 -bg "$focused_bg" -fg "$focused_text" -hlbg "$urgent_bg" -hlfg "urgent_text" -separator-style none -hide-scrollbar | xargs -ifile zathura file, mode "default"
 
@@ -251,26 +251,17 @@ bar {
 }
 
 bindsym $mod+shift+f exec firefox
-bindsym $mod+shift+m exec spotify
 
-assign [class="TelegramDesktop"] $workspace2
-assign [class="Atom"] $workspace3
-assign [class="spotify"] $workspace10
-assign [class="Gnome-mines"] $workspace9
-assign [class="Gnome-sudoku"] $workspace9
-assign [class="Gnome-mahjongg"] $workspace9
-
-for_window [class="Firefox" title="WhatsApp - Mozilla Firefox"] move window to workspace $workspace2
+assign [class="TelegramDesktop"] $workspace9
+for_window [class="Firefox" title="WhatsApp - Mozilla Firefox"] move window to workspace $workspace9
+for_window [class="Firefox" title="Youtube - Mozilla Firefox"] move window to workspace $workspace10
 
 #Change keyboard layout
 bindsym $mod+t exec change-layout
 
-#Workspaces layouts
-exec_always ~/.config/i3/per-workspace-layout.pl
-#Taskbook (scratchpad)
-exec --no-startup-id gnome-terminal --role=taskbook -e 'sh -c "tb; exec bash"'
-for_window [window_role="taskbook"] move scratchpad
-exec --no-startup-id tb_delete_checked
+#Todos (scratchpad)
+exec --no-startup-id gnome-terminal --role=todos -e 'sh -c "echo -e "TODO\n====" >> $(date -I).md && nvim -O $(date -I).md backlog.md"'
+for_window [window_role="todos"] move scratchpad
 
 #Wifi applet
 exec --no-startup-id nm-applet
