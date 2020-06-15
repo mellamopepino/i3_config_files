@@ -290,4 +290,5 @@ bindsym XF86AudioPrev exec playerctl previous
 
 #Screenshot
 bindsym Print exec gnome-screenshot -i
-bindsym Shift+Print exec gnome-screenshot -w -B
+bindsym Shift+Print exec gnome-screenshot -w -B -f ~/screenshot.png && xclip -sel clip -t image/png -i ~/screenshot.png
+
