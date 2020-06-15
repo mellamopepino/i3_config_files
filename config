@@ -260,7 +260,7 @@ for_window [class="Firefox" title="Youtube - Mozilla Firefox"] move window to wo
 bindsym $mod+t exec change-layout
 
 #Todos (scratchpad)
-exec --no-startup-id gnome-terminal --role=todos -e 'sh -c "echo -e "TODO\n====" >> $(date -I).md && nvim -O $(date -I).md backlog.md"'
+exec --no-startup-id gnome-terminal --role=todos -e scripts/open_todos
 for_window [window_role="todos"] move scratchpad
 
 #Wifi applet

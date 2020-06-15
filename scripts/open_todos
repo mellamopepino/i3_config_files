@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sh -c 'cd ~/todos && echo "TODO\\n====" >> $(date -I).md && nvim -O $(date -I).md backlog.md'
