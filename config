@@ -151,11 +151,12 @@ mode "$mode_exit" {
 
 # Menú de chats
 
-set $mode_chats Open: (t) telegram, (w) whatsapp, (a) all
+set $mode_chats Open: (t) telegram, (w) whatsapp, (h) hangouts, (a) all
 mode "$mode_chats" {
-	bindsym t exec ./Telegram/Telegram
-	bindsym w exec firefox -new-window web.whatsapp.com
-	bindsym a exec ./Telegram/Telegram; exec firefox -new-window web.whatsapp.com, mode "default"
+	bindsym t exec telegram-desktop
+	bindsym w exec qutebrowser --target window web.whatsapp.com
+	bindsym h exec qutebrowser --target window https://mail.google.com/mail/u/1/#calls
+	bindsym a exec telegram-desktop; exec qutebrowser -new-window web.whatsapp.com; exec qutebrowser --target window https://mail.google.com/mail/u/1/#calls, mode "default"
 
 	#back to normal: Enter or Escape
 	bindsym Return mode "default"
