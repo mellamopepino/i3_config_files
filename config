@@ -14,6 +14,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
+set $browser qutebrowser
+
 set $up    k
 set $down  j
 set $left  h
@@ -165,6 +167,20 @@ mode "$mode_chats" {
 
 bindsym $mod+c mode "$mode_chats"
 
+# Menú browsers
+
+set $mode_browsers Open: (q) qutebrowser, (f) firefox
+mode "$mode_browsers" {
+	bindsym q exec qutebrowser --target window
+	bindsym f exec firefox --new-window
+
+	#back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+b mode "$mode_browsers"
+
 # Menú de rofi
 
 set $mode_rofi Rofi: (d) dmenu, (s) search browser, (y) search youtube, (o) open zathura
@@ -251,7 +267,7 @@ bar {
         }
 }
 
-bindsym $mod+shift+f exec firefox
+bindsym $mod+shift+f exec $browser
 
 assign [class="TelegramDesktop"] $workspace9
 for_window [class="Firefox" title="WhatsApp - Mozilla Firefox"] move window to workspace $workspace9
